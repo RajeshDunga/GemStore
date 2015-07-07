@@ -7,8 +7,11 @@
   </head>
   <body>
   	<div ng-controller="StoreController as store">
-  			<h1> {{store.product.name}}</h1>
-  			<em class="pull-right">{{store.product.price}}</em>
+  		<div ng-hide="product.soldOut" ng-repeat="product in store.products">
+  			<h1> {{product.name}}</h1>
+  			<em class="pull-right">{{product.price}}</em>
+  			<button  ng-show="product.canPurchase">Add to cart</button>
+  		</div>
   	</div> 
   </body>
 </html>
