@@ -6,12 +6,23 @@
     <script type="text/javascript" src="app.js"></script>
   </head>
   <body>
+  	<div>
+  		<H1>Gems Store<H1>
+  	</div>
   	<div ng-controller="StoreController as store">
-  		<div ng-hide="product.soldOut" ng-repeat="product in store.products">
-  			<h1> {{product.name}}</h1>
-  			<em class="pull-right">{{product.price}}</em>
+  	<ul class="list-group">
+  		<li class="list-group-item" ng-hide="product.soldOut" ng-repeat="product in store.products | orderBy:'price'">
+  			<h3> {{product.name}}  			
+  				<em class="pull-right">{{product.price | currency}}</em>
+  			</h3>
+  			<div class="gallery">
+          		<img ng-src={{product.icon}} />
+        	</div>
+  			
+
   			<button  ng-show="product.canPurchase">Add to cart</button>
-  		</div>
-  	</div> 
+  		</li>
+  	</ul>
+  </div>
   </body>
 </html>
